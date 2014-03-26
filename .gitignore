@@ -7,3 +7,6 @@ spec/stdout
 coverage/
 .ruby-version
 .ruby-gemset
+bin/
+test/dump.rdb
+.bundle
