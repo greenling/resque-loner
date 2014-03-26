@@ -84,13 +84,13 @@ describe 'Resque' do
     end
 
     it 'should be robust regarding hash attributes' do
-      Resque.enqueue SomeUniqueJob, bar: 1, foo: 2
-      Resque.enqueue SomeUniqueJob, foo: 2, bar: 1
+      Resque.enqueue SomeUniqueJob, :bar => 1, :foo => 2
+      Resque.enqueue SomeUniqueJob, :foo => 2, :bar => 1
       Resque.size(:other_queue).should == 1
     end
 
     it 'should be robust regarding hash attributes (JSON does not distinguish between string and symbol)' do
-      Resque.enqueue SomeUniqueJob, bar: 1, foo: 1
+      Resque.enqueue SomeUniqueJob, :bar => 1, :foo => 1
       Resque.enqueue SomeUniqueJob, :bar => 1, 'foo' => 1
       Resque.size(:other_queue).should == 1
     end

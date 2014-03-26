@@ -18,7 +18,7 @@ if defined? Airbrake
 
       Airbrake.expects(:notify_or_ignore).with(
         exception,
-        parameters: { payload_class: 'Object', payload_args: '66' })
+        :parameters => { :payload_class => 'Object', :payload_args => '66' })
 
       backend = Resque::Failure::Airbrake.new(exception, worker, queue, payload)
       backend.save
